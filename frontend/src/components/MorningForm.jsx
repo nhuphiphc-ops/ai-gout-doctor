@@ -187,9 +187,9 @@ export default function MorningForm({ todayLog, onSave, onCancel }) {
             value={sleepQuality}
             onChange={(e) => setSleepQuality(parseInt(e.target.value))}
           />
-          <div style={{ display: 'flex', justifyContent: 'between', fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
             <span>Rất trằn trọc / Mất ngủ</span>
-            <span style={{ marginLeft: 'auto' }}>Ngủ sâu / Sảng khoái</span>
+            <span>Ngủ sâu / Sảng khoái</span>
           </div>
         </div>
 
@@ -250,18 +250,18 @@ export default function MorningForm({ todayLog, onSave, onCancel }) {
 
               <div className="form-group" style={{ marginTop: '20px' }}>
                 <label className="form-label">Mức độ đau khớp chân hiện tại: <strong>{painSeverity}/10</strong></label>
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="10" 
-                  className="form-input" 
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  className="form-input"
                   style={{ padding: '0' }}
                   value={painSeverity}
                   onChange={(e) => setPainSeverity(parseInt(e.target.value))}
                 />
-                <div style={{ display: 'flex', justifyContent: 'between', fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
                   <span>Nhói nhẹ / Thỉnh thoảng nhức</span>
-                  <span style={{ marginLeft: 'auto' }}>Đau dữ dội / Sưng tấy đỏ / Không đi lại được</span>
+                  <span>Đau dữ dội / Sưng tấy đỏ / Không đi lại được</span>
                 </div>
               </div>
             </div>

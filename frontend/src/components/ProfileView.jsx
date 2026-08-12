@@ -199,7 +199,7 @@ export default function ProfileView({ onProfileUpdate }) {
 
         {/* BMI Card Display */}
         <div style={{ background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-color)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ background: 'var(--color-safe-light)', padding: '12px', borderRadius: '50%', color: 'var(--color-safe)', fontSize: '24px', fontWeight: '800', width: '60px', height: '60px', display: 'flex', alignItems: 'center', justify: 'center' }}>
+          <div style={{ background: 'var(--color-safe-light)', padding: '12px', borderRadius: '50%', color: 'var(--color-safe)', fontSize: '24px', fontWeight: '800', width: '60px', height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {bmi.toFixed(1)}
           </div>
           <div>

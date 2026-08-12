@@ -1,15 +1,15 @@
 import React from 'react';
-import { 
-  ResponsiveContainer, 
-  LineChart, 
-  Line, 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend 
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  ComposedChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend
 } from 'recharts';
 import { TrendingUp, Activity, BarChart2 } from 'lucide-react';
 
@@ -178,30 +178,30 @@ export default function ChartsView({ trendsData, activeView, onViewChange }) {
               </h4>
               <div style={{ width: '100%', height: 250 }}>
                 <ResponsiveContainer>
-                  <BarChart data={trendsData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <ComposedChart data={trendsData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                     <XAxis dataKey="date" stroke="var(--text-muted)" style={{ fontSize: '12px' }} />
                     <YAxis yAxisId="left" stroke="var(--text-muted)" style={{ fontSize: '12px' }} />
                     <YAxis yAxisId="right" orientation="right" stroke="var(--color-accent)" domain={[0, 4]} style={{ fontSize: '12px' }} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend wrapperStyle={{ fontSize: '13px' }} />
-                    <Bar 
+                    <Bar
                       yAxisId="left"
-                      dataKey="steps" 
-                      name="Số bước chân" 
-                      fill="rgba(16, 185, 129, 0.4)" 
+                      dataKey="steps"
+                      name="Số bước chân"
+                      fill="rgba(16, 185, 129, 0.4)"
                       radius={[4, 4, 0, 0]}
                     />
-                    <Line 
+                    <Line
                       yAxisId="right"
-                      type="monotone" 
-                      dataKey="water_intake" 
-                      name="Nước uống (L)" 
-                      stroke="var(--color-accent)" 
+                      type="monotone"
+                      dataKey="water_intake"
+                      name="Nước uống (L)"
+                      stroke="var(--color-accent)"
                       strokeWidth={2.5}
                       dot={{ r: 3 }}
                     />
-                  </BarChart>
+                  </ComposedChart>
                 </ResponsiveContainer>
               </div>
             </div>

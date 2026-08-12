@@ -40,8 +40,8 @@ export default function AfternoonForm({ todayLog, onSave, onCancel }) {
       setHadRedMeat(todayLog.had_red_meat || false);
       setHadSweets(todayLog.had_sweets || false);
 
-      setFoodsConsumed(todayLog.foods.map(f => f.food_name) || []);
-      setMedications(todayLog.medications.map(m => m.med_name) || []);
+      setFoodsConsumed((todayLog.foods || []).map(f => f.food_name));
+      setMedications((todayLog.medications || []).map(m => m.med_name));
     }
   }, [todayLog]);
 
