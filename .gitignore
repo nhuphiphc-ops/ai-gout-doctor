@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+*.egg-info/
+
+# Database - khong push file SQLite len GitHub
+*.db
+*.sqlite
+*.sqlite3
+
+# Static uploads - anh avatar luu tren Cloudinary
+backend/static/avatars/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Cloudflare tunnel binary
+cloudflared.exe
+
+# Test artifacts
+.pytest_cache/
+.coverage

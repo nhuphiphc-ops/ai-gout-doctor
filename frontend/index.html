@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Prevent Zalo browser injected errors from crashing Vite dev server
+      window.addEventListener('error', function(e) {
+        if (e.message && (e.message.includes('zaloJSV2') || e.message.includes('Zalo'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && (String(e.reason).includes('zaloJSV2') || String(e.reason).includes('Zalo'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#10b981" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <title>Bác Sĩ Gia Đình AI - Quản Lý Gout & Sức Khỏe Trung Niên</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

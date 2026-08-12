@@ -1,0 +1,24 @@
+{
+  "name": "Bác Sĩ Gout AI",
+  "short_name": "GoutAI",
+  "description": "Bác sĩ gia đình AI theo dõi sức khỏe và gout cá nhân cho anh Phi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
