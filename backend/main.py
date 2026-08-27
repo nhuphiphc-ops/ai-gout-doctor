@@ -610,3 +610,39 @@ def get_pdf_report(current_user: models.User = Depends(auth.get_current_user), d
         headers=headers,
         media_type='application/pdf'
     )
+
+# --- DOCUMENT AGGREGATOR & OCR ROUTES ---
+try:
+    from document_aggregator import DocumentAggregator
+except ImportError:
+    import sys
+    sys.path.insert(0, os.path.dirname(__file__))
+    from document_aggregator import DocumentAggregator
+
+@app.post("/api/documents/analyze")
+async def analyze_uploaded_document(file: UploadFile = File(...)):
+    """Phân tích, OCR và bóc tách thực thể từ tài liệu tải lên."""
+    import tempfile
+    suffix = os.path.splitext(file.filename)[1]
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+        shutil.copyfileobj(file.file, tmp)
+        tmp_path = tmp.name
+
+    try:
+        agg = DocumentAggregator(project_name="Du An Suc Khoe Mr Phi", verbose=False)
+        result = agg.read_file(tmp_path)
+        summary = agg.get_project_summary()
+        return {
+            "success": True,
+            "filename": file.filename,
+            "file_type": result.get("type"),
+            "text_pages": len(result.get("text", [])),
+            "tables_found": len(result.get("tables", [])),
+            "insights": agg.key_insights,
+            "summary": summary
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi phân tích tài liệu: {str(e)}")
+    finally:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
