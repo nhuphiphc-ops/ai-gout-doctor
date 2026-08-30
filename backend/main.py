@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from datetime import date, datetime, timedelta
 from typing import Optional, List
 import os

@@ -2,10 +2,14 @@
 
 :root {
   /* Design Tokens */
-  --bg-primary: #0b0f19;
-  --bg-card: rgba(23, 32, 53, 0.7);
+  --bg-primary: radial-gradient(circle at 50% -20%, #1e3a8a 0%, #0b0f19 80%);
+  --bg-color-fallback: #0b0f19;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   --bg-card-hover: rgba(30, 41, 67, 0.85);
-  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
@@ -67,7 +71,9 @@ a:hover {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background-color: var(--bg-color-fallback);
+  background-image: var(--bg-primary);
+  background-attachment: fixed;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;

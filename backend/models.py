@@ -37,6 +37,12 @@ class MedicalCheckup(Base):
     ast = Column(Float, nullable=True) # U/L
     alt = Column(Float, nullable=True) # U/L
     creatinine = Column(Float, nullable=True) # umol/L
+    egfr = Column(Float, nullable=True) # mL/min/1.73m2
+    kidney_cyst_size = Column(String, nullable=True) # e.g. "11.7x10 mm"
+    
+    tsh = Column(Float, nullable=True) # mIU/L
+    ft3 = Column(Float, nullable=True) # pmol/L
+    ft4 = Column(Float, nullable=True) # pmol/L
     
     blood_pressure_systolic = Column(Integer, nullable=True)
     blood_pressure_diastolic = Column(Integer, nullable=True)
