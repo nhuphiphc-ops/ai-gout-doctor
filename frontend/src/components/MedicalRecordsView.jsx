@@ -163,6 +163,12 @@ function MedicalRecordsView() {
                   <div><span className="text-gray-500 block">Huyết áp</span><span className="font-semibold">{record.blood_pressure_systolic}/{record.blood_pressure_diastolic}</span></div>
                 )}
               </div>
+              {record.notes && (
+                <div className="mt-4 pt-3 border-t border-gray-100">
+                  <span className="text-gray-500 block text-xs font-semibold mb-1">KẾT LUẬN / GHI CHÚ CHUYÊN KHOA:</span>
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">{record.notes}</p>
+                </div>
+              )}
             </div>
           ))
         )}
