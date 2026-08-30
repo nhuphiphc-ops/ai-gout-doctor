@@ -370,6 +370,21 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
             </div>
           </div>
 
+          {/* Recovery Guide Button */}
+          <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
+              <Activity size={20} color="#3b82f6" />
+              Tài Liệu Khắc Phục Bệnh
+            </h4>
+            <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              Phân tích tổng hợp các chỉ số y tế đang cảnh báo (axit uric, thận, tuyến giáp...) và lập kế hoạch phục hồi có giọng đọc AI.
+            </p>
+            <button onClick={() => onNavigate('guide')} className="btn" style={{ background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Xem Cẩm nang Khắc phục
+            </button>
+          </div>
+
           {/* Tips Box */}
           <div className="card" style={{ borderLeft: '4px solid var(--color-primary)' }}>
             <h4 style={{ color: 'var(--color-primary)', marginBottom: '8px', fontSize: '17px' }}>Lời khuyên của chuyên gia</h4>
