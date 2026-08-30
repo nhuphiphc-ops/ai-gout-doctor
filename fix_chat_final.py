@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+code = '''import React, { useState, useEffect, useRef } from 'react';
 import apiService from '../services/api';
 
 function ChatView({ userProfile }) {
@@ -77,8 +77,8 @@ function ChatView({ userProfile }) {
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[85%] rounded-2xl p-3 shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white border border-gray-100 rounded-bl-none text-gray-800'}`}>
+          <div key={idx} className={lex }>
+            <div className={max-w-[85%] rounded-2xl p-3 shadow-sm }>
               <div className="whitespace-pre-wrap text-[15px] leading-relaxed">
                 {msg.content}
               </div>
@@ -123,3 +123,6 @@ function ChatView({ userProfile }) {
 }
 
 export default ChatView;
+'''
+with open('frontend/src/components/ChatView.jsx', 'w', encoding='utf-8') as f:
+    f.write(code)
