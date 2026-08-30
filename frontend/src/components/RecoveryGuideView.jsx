@@ -18,7 +18,7 @@ function RecoveryGuideView() {
     try {
       const apiKey = localStorage.getItem('gemini_api_key') || '';
       const prompt = "Hãy đóng vai một chuyên gia y tế. Kiểm tra toàn bộ hồ sơ y tế (xét nghiệm, siêu âm) của tôi. Phân tích CHỈ những chỉ số đang vượt ngưỡng hoặc bất thường (ví dụ axit uric, eGFR, nang thận, TSH...). Viết thành một TÀI LIỆU KHẮC PHỤC BỆNH ngắn gọn, chia làm 2 phần: 1. Chỉ số cảnh báo, 2. Hành động cần làm ngay. Viết ngắn gọn, súc tích để tôi dễ nghe trên điện thoại.";
-      const res = await apiService.sendChatMessage(prompt, apiKey);
+      const res = await apiService.sendChatMessage(prompt, []);
       setGuide(res.response);
     } catch (err) {
       setError("Không thể tải tài liệu. Vui lòng kiểm tra lại API Key hoặc mạng.");
