@@ -108,32 +108,27 @@ export default function App() {
           {/* Desktop Navigation Links */}
           <ul className="nav-links">
             <li>
-              <button className={\
-av-btn \\} onClick={() => setCurrentView('chat')}>
+              <button className={`nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('chat')}>
                 Tư vấn AI
               </button>
             </li>
             <li>
-              <button className={\
-av-btn \\} onClick={() => setCurrentView('medical')}>
+              <button className={`nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('medical')}>
                 Hồ sơ y tế
               </button>
             </li>
             <li>
-              <button className={\
-av-btn \\} onClick={() => setCurrentView('dashboard')}>
+              <button className={`nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('dashboard')}>
                 Nhật ký
               </button>
             </li>
             <li>
-              <button className={\
-av-btn \\} onClick={() => setCurrentView('charts')}>
+              <button className={`nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('charts')}>
                 Biểu đồ
               </button>
             </li>
             <li>
-              <button className={\
-av-btn \\} onClick={() => setCurrentView('profile')}>
+              <button className={`nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('profile')}>
                 Cá nhân
               </button>
             </li>
@@ -179,27 +174,27 @@ av-btn \\} onClick={() => setCurrentView('profile')}>
             
             <ul className="mobile-nav-links">
               <li>
-                <button className={\mobile-nav-btn \\} onClick={() => { setCurrentView('chat'); setMobileMenuOpen(false); }}>
+                <button className={`mobile-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => { setCurrentView('chat'); setMobileMenuOpen(false); }}>
                   Tư vấn AI
                 </button>
               </li>
               <li>
-                <button className={\mobile-nav-btn \\} onClick={() => { setCurrentView('medical'); setMobileMenuOpen(false); }}>
+                <button className={`mobile-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => { setCurrentView('medical'); setMobileMenuOpen(false); }}>
                   Hồ sơ y tế
                 </button>
               </li>
               <li>
-                <button className={\mobile-nav-btn \\} onClick={() => { setCurrentView('dashboard'); setMobileMenuOpen(false); }}>
+                <button className={`mobile-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => { setCurrentView('dashboard'); setMobileMenuOpen(false); }}>
                   Nhật ký sinh hoạt
                 </button>
               </li>
               <li>
-                <button className={\mobile-nav-btn \\} onClick={() => { setCurrentView('charts'); setMobileMenuOpen(false); }}>
+                <button className={`mobile-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => { setCurrentView('charts'); setMobileMenuOpen(false); }}>
                   Biểu đồ
                 </button>
               </li>
               <li>
-                <button className={\mobile-nav-btn \\} onClick={() => { setCurrentView('profile'); setMobileMenuOpen(false); }}>
+                <button className={`mobile-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => { setCurrentView('profile'); setMobileMenuOpen(false); }}>
                   Cá nhân
                 </button>
               </li>
@@ -209,7 +204,7 @@ av-btn \\} onClick={() => setCurrentView('profile')}>
       )}
 
       {/* Render Main Content */}
-      <main className={\main-content \\}>
+      <main className={`main-content ${currentView === "chat" ? "" : "container"}`}>
         {currentView === 'chat' && (
           <ChatView userProfile={currentUser} />
         )}
@@ -247,23 +242,23 @@ av-btn \\} onClick={() => setCurrentView('profile')}>
 
       {/* Bottom Navigation Bar for Mobile */}
       <div className="mobile-bottom-nav">
-        <button className={\mobile-bottom-nav-btn \\} onClick={() => setCurrentView('chat')}>
+        <button className={`mobile-bottom-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('chat')}>
           <MessageCircle size={20} />
           <span>Tư vấn</span>
         </button>
-        <button className={\mobile-bottom-nav-btn \\} onClick={() => setCurrentView('medical')}>
+        <button className={`mobile-bottom-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('medical')}>
           <FileText size={20} />
           <span>Hồ sơ</span>
         </button>
-        <button className={\mobile-bottom-nav-btn \\} onClick={() => setCurrentView('dashboard')}>
+        <button className={`mobile-bottom-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('dashboard')}>
           <Home size={20} />
           <span>Nhật ký</span>
         </button>
-        <button className={\mobile-bottom-nav-btn \\} onClick={() => setCurrentView('charts')}>
+        <button className={`mobile-bottom-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('charts')}>
           <TrendingUp size={20} />
           <span>Biểu đồ</span>
         </button>
-        <button className={\mobile-bottom-nav-btn \\} onClick={() => setCurrentView('profile')}>
+        <button className={`mobile-bottom-nav-btn ${currentView === "foo" ? "active" : ""}`} onClick={() => setCurrentView('profile')}>
           <User size={20} />
           <span>Cá nhân</span>
         </button>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+code = '''import React, { useState, useEffect, useRef } from 'react';
 import apiService from '../services/api';
 
 function ChatView({ userProfile }) {
   const [messages, setMessages] = useState([
-    { role: 'ai', content: "Chào anh, tôi là Trợ lý AI Gout Doctor. Hôm nay sức khỏe của anh thế nào? Anh có cần tôi phân tích chỉ số xét nghiệm hay tư vấn thực đơn không?" }
+    { role: 'ai', content: Chào anh, tôi là Trợ lý AI Gout Doctor. Hôm nay sức khỏe của anh thế nào? Anh có cần tôi phân tích chỉ số xét nghiệm hay tư vấn thực đơn không? }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ function ChatView({ userProfile }) {
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg, idx) => (
           <div key={idx} className={lex }>
-            <div className="max-w-[85%] rounded-2xl p-3 shadow-sm">
+            <div className={max-w-[85%] rounded-2xl p-3 shadow-sm }>
               <div className="whitespace-pre-wrap text-[15px] leading-relaxed">
                 {msg.content}
               </div>
@@ -93,3 +93,5 @@ function ChatView({ userProfile }) {
 }
 
 export default ChatView;
+'''
+with open('frontend/src/components/ChatView.jsx', 'w', encoding='utf-8') as f: f.write(code)
