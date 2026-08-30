@@ -646,3 +646,59 @@ async def analyze_uploaded_document(file: UploadFile = File(...)):
     finally:
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
+
+# --- New Endpoints for AI Consultation & Baseline Indices ---
+
+@app.post("/api/medical-checkups", response_model=schemas.MedicalCheckupResponse)
+def create_medical_checkup(
+    checkup: schemas.MedicalCheckupCreate,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db)
+):
+    db_checkup = models.MedicalCheckup(**checkup.model_dump(), user_id=current_user.id)
+    db.add(db_checkup)
+    db.commit()
+    db.refresh(db_checkup)
+    return db_checkup
+
+@app.get("/api/medical-checkups", response_model=List[schemas.MedicalCheckupResponse])
+def get_medical_checkups(
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db)
+):
+    return db.query(models.MedicalCheckup).filter(
+        models.MedicalCheckup.user_id == current_user.id
+    ).order_by(models.MedicalCheckup.checkup_date.desc()).all()
+
+@app.post("/api/chat")
+def chat_with_ai(
+    query: schemas.ChatQuery,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db)
+):
+    # Fetch user checkups
+    checkups = db.query(models.MedicalCheckup).filter(
+        models.MedicalCheckup.user_id == current_user.id
+    ).order_by(models.MedicalCheckup.checkup_date.desc()).all()
+    
+    # Fetch recent logs (last 7 days)
+    import datetime
+    start_date = datetime.date.today() - datetime.timedelta(days=7)
+    recent_logs = db.query(models.HealthLog).filter(
+        models.HealthLog.user_id == current_user.id,
+        models.HealthLog.log_date >= start_date
+    ).order_by(models.HealthLog.log_date.desc()).all()
+    
+    # Format history
+    history = [{"role": msg.role, "content": msg.content} for msg in query.history]
+    
+    # Call AI Engine
+    response_text = ai_engine.generate_chat_response(
+        user=current_user,
+        checkups=checkups,
+        recent_logs=recent_logs,
+        query=query.message,
+        history=history
+    )
+    
+    return {"response": response_text}

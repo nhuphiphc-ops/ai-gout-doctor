@@ -130,5 +130,22 @@ export const apiService = {
     const token = localStorage.getItem('auth_token') || '';
     return `${API_URL}/api/export/${format}?token=${token}`;
   },
+
+  // Medical Checkups
+  getMedicalCheckups: async () => {
+    const response = await api.get('/api/medical-checkups');
+    return response.data;
+  },
+  
+  createMedicalCheckup: async (data) => {
+    const response = await api.post('/api/medical-checkups', data);
+    return response.data;
+  },
+  
+  // AI Chat
+  sendChatMessage: async (message, history) => {
+    const response = await api.post('/api/chat', { message, history });
+    return response.data;
+  }
 };
 export default apiService;

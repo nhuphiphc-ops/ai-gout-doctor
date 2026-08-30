@@ -17,6 +17,35 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     logs = relationship("HealthLog", back_populates="user", cascade="all, delete-orphan")
+    checkups = relationship("MedicalCheckup", back_populates="user", cascade="all, delete-orphan")
+
+class MedicalCheckup(Base):
+    __tablename__ = "medical_checkups"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    checkup_date = Column(Date, nullable=False)
+    
+    # Baseline Indices
+    uric_acid = Column(Float, nullable=True)  # mg/dL or umol/L
+    fasting_glucose = Column(Float, nullable=True) # mmol/L
+    hba1c = Column(Float, nullable=True) # %
+    cholesterol_total = Column(Float, nullable=True) # mmol/L
+    ldl = Column(Float, nullable=True) # mmol/L
+    hdl = Column(Float, nullable=True) # mmol/L
+    triglyceride = Column(Float, nullable=True) # mmol/L
+    ast = Column(Float, nullable=True) # U/L
+    alt = Column(Float, nullable=True) # U/L
+    creatinine = Column(Float, nullable=True) # umol/L
+    
+    blood_pressure_systolic = Column(Integer, nullable=True)
+    blood_pressure_diastolic = Column(Integer, nullable=True)
+    weight = Column(Float, nullable=True)
+    
+    notes = Column(String, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    user = relationship("User", back_populates="checkups")
 
 class HealthLog(Base):
     __tablename__ = "health_logs"

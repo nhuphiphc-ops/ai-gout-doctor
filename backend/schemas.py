@@ -150,3 +150,41 @@ class CorrelationResponse(BaseModel):
     correlations: List[CorrelationItem]
     days_analyzed: int
     pain_days_count: int
+
+# Medical Checkup schemas
+class MedicalCheckupBase(BaseModel):
+    checkup_date: date
+    uric_acid: Optional[float] = None
+    fasting_glucose: Optional[float] = None
+    hba1c: Optional[float] = None
+    cholesterol_total: Optional[float] = None
+    ldl: Optional[float] = None
+    hdl: Optional[float] = None
+    triglyceride: Optional[float] = None
+    ast: Optional[float] = None
+    alt: Optional[float] = None
+    creatinine: Optional[float] = None
+    blood_pressure_systolic: Optional[int] = None
+    blood_pressure_diastolic: Optional[int] = None
+    weight: Optional[float] = None
+    notes: Optional[str] = None
+
+class MedicalCheckupCreate(MedicalCheckupBase):
+    pass
+
+class MedicalCheckupResponse(MedicalCheckupBase):
+    id: int
+    user_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+# Chat schemas
+class ChatMessage(BaseModel):
+    role: str # 'user' or 'ai'
+    content: str
+
+class ChatQuery(BaseModel):
+    message: str
+    history: List[ChatMessage] = []

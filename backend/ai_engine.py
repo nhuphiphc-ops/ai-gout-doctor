@@ -382,3 +382,71 @@ def calculate_food_correlation(db: Session, user_id: int, days_limit: int = 30) 
         "days_analyzed": len(logs),
         "pain_days_count": len(pain_dates)
     }
+
+import os
+import google.generativeai as genai
+
+def generate_chat_response(
+    user: models.User, 
+    checkups: List[models.MedicalCheckup], 
+    recent_logs: List[models.HealthLog],
+    query: str, 
+    history: List[Dict[str, str]]
+) -> str:
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return "Xin lỗi, hệ thống chưa được cấu hình GEMINI_API_KEY. Vui lòng cập nhật API Key để sử dụng tính năng Tư vấn AI."
+        
+    genai.configure(api_key=api_key)
+    
+    # Chuẩn bị Context
+    context = f"Thông tin người dùng: {user.name or 'Bệnh nhân'} - {user.age} tuổi - Cân nặng mục tiêu: {user.target_weight}kg.\n"
+    
+    if checkups:
+        latest = checkups[0] # Assume descending order
+        context += f"\nChỉ số xét nghiệm gần nhất ({latest.checkup_date}):\n"
+        if latest.uric_acid: context += f"- Axit Uric: {latest.uric_acid} mg/dL (nguy cơ gout nếu > 7.0)\n"
+        if latest.fasting_glucose: context += f"- Đường huyết đói: {latest.fasting_glucose} mmol/L\n"
+        if latest.cholesterol_total: context += f"- Cholesterol tổng: {latest.cholesterol_total} mmol/L\n"
+        if latest.ast or latest.alt: context += f"- Men gan AST/ALT: {latest.ast}/{latest.alt} U/L\n"
+        if latest.creatinine: context += f"- Creatinine (thận): {latest.creatinine} µmol/L\n"
+    else:
+        context += "\nChưa có hồ sơ xét nghiệm y tế nào được cung cấp.\n"
+        
+    if recent_logs:
+        context += "\nTóm tắt nhật ký sức khỏe 7 ngày qua:\n"
+        pain_days = sum(1 for l in recent_logs if l.joint_pain)
+        context += f"- Số ngày bị đau khớp: {pain_days}/{len(recent_logs)}\n"
+        # Gather recent foods
+        recent_foods = set()
+        for log in recent_logs:
+            for food in log.foods:
+                recent_foods.add(food.food_name)
+        if recent_foods:
+            context += f"- Thực phẩm mới ăn gần đây: {', '.join(list(recent_foods)[:10])}\n"
+            
+    system_prompt = f"""
+Bạn là AI Gout Doctor - Trợ lý bác sĩ cá nhân chuyên nghiệp, tận tâm và có chuyên môn về bệnh Gout, Tim mạch và Chuyển hóa.
+Dưới đây là thông tin y tế của người dùng:
+{context}
+
+Nhiệm vụ: Dựa vào câu hỏi của người dùng và các chỉ số sức khỏe trên, hãy đưa ra lời khuyên y tế, phân tích, hoặc giải đáp thắc mắc. 
+- Nếu người dùng có Axit Uric cao và đang bị đau khớp, khuyên dùng thuốc theo đơn hoặc đi khám ngay, đồng thời kiêng khem chặt chẽ.
+- Cảnh báo rõ ràng rằng bạn là AI và lời khuyên chỉ mang tính tham khảo, không thay thế bác sĩ.
+- Trả lời bằng tiếng Việt, thân thiện, rõ ràng, chia đoạn dễ đọc.
+"""
+
+    model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=system_prompt)
+    
+    # Build chat history for Gemini (role 'user' or 'model')
+    formatted_history = []
+    for msg in history:
+        role = "user" if msg["role"] == "user" else "model"
+        formatted_history.append({"role": role, "parts": [msg["content"]]})
+        
+    try:
+        chat = model.start_chat(history=formatted_history)
+        response = chat.send_message(query)
+        return response.text
+    except Exception as e:
+        return f"Xin lỗi, có lỗi xảy ra khi gọi AI: {str(e)}"
