@@ -7,7 +7,17 @@ function ChatView({ userProfile }) {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [apiKey, setApiKey] = useState(localStorage.getItem('gemini_api_key') || '');
+  const [showApiPrompt, setShowApiPrompt] = useState(!localStorage.getItem('gemini_api_key'));
   const endRef = useRef(null);
+
+  const saveApiKey = (e) => {
+    e.preventDefault();
+    if (apiKey.trim()) {
+      localStorage.setItem('gemini_api_key', apiKey.trim());
+      setShowApiPrompt(false);
+    }
+  };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -23,10 +33,15 @@ function ChatView({ userProfile }) {
     setLoading(true);
 
     try {
-      const res = await apiService.sendChatMessage(input);
+      // Modify apiService to accept apiKey in header or body
+      const res = await apiService.sendChatMessage(input, apiKey);
       setMessages([...newMsgs, { role: 'ai', content: res.response }]);
     } catch (err) {
-      setMessages([...newMsgs, { role: 'ai', content: 'Xin lỗi, hệ thống chưa được cấu hình GEMINI_API_KEY. Vui lòng cấu hình trên server.' }]);
+      if (err.response?.status === 401 || err.response?.status === 403) {
+         setShowApiPrompt(true);
+         localStorage.removeItem('gemini_api_key');
+      }
+      setMessages([...newMsgs, { role: 'ai', content: 'Xin lỗi, hệ thống bị lỗi hoặc API Key không hợp lệ. Vui lòng kiểm tra lại.' }]);
     }
     setLoading(false);
   };
@@ -40,8 +55,28 @@ function ChatView({ userProfile }) {
             <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Đang trực tuyến
           </p>
         </div>
+        <div className="flex items-center gap-3">
+          <button onClick={() => setShowApiPrompt(!showApiPrompt)} className="text-xs bg-gray-100 px-3 py-1.5 rounded-full text-gray-600 font-medium hover:bg-gray-200">
+            🔑 API Key
+          </button>
+          {userProfile?.avatar_url && (
+            <img src={userProfile.avatar_url} alt="User" className="w-8 h-8 rounded-full border-2 border-blue-100 object-cover" />
+          )}
+        </div>
+      </div>
+
+      {showApiPrompt && (
+        <div className="bg-blue-50 p-4 border-b border-blue-100 flex flex-col gap-2">
+          <p className="text-sm text-blue-800 font-medium">Vui lòng nhập Google Gemini API Key để chat:</p>
+          <form onSubmit={saveApiKey} className="flex gap-2">
+            <input type="password" value={apiKey} onChange={e => setApiKey(e.target.value)} placeholder="AIzaSy..." className="flex-1 px-3 py-2 border border-blue-200 rounded-lg text-sm focus:outline-none focus:border-blue-400" />
+            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">Lưu Key</button>
+          </form>
+          <p className="text-xs text-blue-600 mt-1">Lưu ý: Key sẽ chỉ được lưu an toàn trên trình duyệt của bạn.</p>
+        </div>
+      )}
         {userProfile?.avatar_url && (
-          <img src={userProfile.avatar_url} alt="User" className="w-10 h-10 rounded-full border-2 border-blue-100 object-cover" />
+          <img src={userProfile.avatar_url} alt="User" className="w-8 h-8 rounded-full border-2 border-blue-100 object-cover" />
         )}
       </div>
 
