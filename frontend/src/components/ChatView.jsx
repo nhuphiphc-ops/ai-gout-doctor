@@ -60,7 +60,7 @@ function ChatView({ userProfile }) {
             🔑 API Key
           </button>
           {userProfile?.avatar_url && (
-            <img src={userProfile.avatar_url} alt="User" className="w-8 h-8 rounded-full border-2 border-blue-100 object-cover" />
+            <img src={userProfile.avatar_url} alt="User" style={{ width: '20px', height: '20px' }} className=" rounded-full border-2 border-blue-100 object-cover" />
           )}
         </div>
       </div>
@@ -76,7 +76,7 @@ function ChatView({ userProfile }) {
         </div>
       )}
         {userProfile?.avatar_url && (
-          <img src={userProfile.avatar_url} alt="User" className="w-8 h-8 rounded-full border-2 border-blue-100 object-cover" />
+          <img src={userProfile.avatar_url} alt="User" style={{ width: '20px', height: '20px' }} className=" rounded-full border-2 border-blue-100 object-cover" />
         )}
       </div>
 
