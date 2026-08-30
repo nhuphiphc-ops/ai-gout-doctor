@@ -18,6 +18,7 @@ import AfternoonForm from './components/AfternoonForm';
 import ChartsView from './components/ChartsView';
 import ProfileView from './components/ProfileView';
 import ChatView from './components/ChatView';
+import RecoveryGuideView from './components/RecoveryGuideView';
 import MedicalRecordsView from './components/MedicalRecordsView';
 
 export default function App() {
@@ -204,8 +205,11 @@ export default function App() {
       )}
 
       {/* Render Main Content */}
-      <main className={`main-content ${currentView === "chat" ? "" : "container"}`}>
-        {currentView === 'chat' && (
+        <main className={`main-content ${currentView === "chat" ? "" : "container"}`}>
+          {currentView === 'guide' && (
+            <RecoveryGuideView />
+          )}
+          {currentView === 'chat' && (
           <ChatView userProfile={currentUser} />
         )}
 
