@@ -237,6 +237,10 @@ export default function App() {
           <AfternoonForm todayLog={dashboardData?.today_log} onSave={handleSaveLog} onCancel={() => setCurrentView('dashboard')} />
         )}
 
+        {currentView === 'video_script' && (
+          <VideoScriptView />
+        )}
+
         {currentView === 'charts' && (
           <ChartsView trendsData={dashboardData?.trends || []} activeView={chartView} onViewChange={(view) => setChartView(view)} />
         )}
