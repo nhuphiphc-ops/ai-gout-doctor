@@ -2,7 +2,7 @@
 
 :root {
   /* Design Tokens */
-  --bg-primary: radial-gradient(circle at 50% -20%, #1e3a8a 0%, #0b0f19 80%);
+  --bg-primary: radial-gradient(circle at 50% -20%, #064e3b 0%, #0f172a 80%);
   --bg-color-fallback: #0b0f19;
   --bg-card: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(16px);
@@ -24,7 +24,7 @@
   
   --color-primary: #10b981;
   --color-primary-hover: #059669;
-  --color-accent: #6366f1;
+  --color-accent: #eab308;
   
   --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

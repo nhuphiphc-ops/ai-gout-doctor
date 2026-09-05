@@ -374,13 +374,13 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
           {/* Video Script Module Button */}
           <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
-              <Video size={20} color="#8b5cf6" />
+              <Video size={20} color="#eab308" />
               Viết Kịch Bản Video Sức Khỏe
             </h4>
             <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
               Module AI hỗ trợ sáng tạo kịch bản video đa nền tảng (TikTok, Shorts, YouTube) dành cho kênh Mr. Phi.
             </p>
-            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
+            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
               <Video size={18} style={{ marginRight: '8px' }} />
               Tạo Kịch Bản Mới
             </button>
@@ -389,13 +389,13 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
           {/* Video Script Module Button */}
           <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
-              <Video size={20} color="#8b5cf6" />
+              <Video size={20} color="#eab308" />
               Viết Kịch Bản Video Sức Khỏe
             </h4>
             <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
               Module AI hỗ trợ sáng tạo kịch bản video đa nền tảng (TikTok, Shorts, YouTube) dành cho kênh Mr. Phi.
             </p>
-            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
+            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
               <Video size={18} style={{ marginRight: '8px' }} />
               Tạo Kịch Bản Mới
             </button>
@@ -404,13 +404,13 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
           {/* Recovery Guide Button */}
           <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
-              <Activity size={20} color="#3b82f6" />
+              <Activity size={20} color="#22c55e" />
               Tài Liệu Khắc Phục Bệnh
             </h4>
             <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
               Phân tích tổng hợp các chỉ số y tế đang cảnh báo (axit uric, thận, tuyến giáp...) và lập kế hoạch phục hồi có giọng đọc AI.
             </p>
-            <button onClick={() => onNavigate('guide')} className="btn" style={{ background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
+            <button onClick={() => onNavigate('guide')} className="btn" style={{ background: 'linear-gradient(135deg, #16a34a 0%, #22c55e 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
               Xem Cẩm nang Khắc phục
             </button>

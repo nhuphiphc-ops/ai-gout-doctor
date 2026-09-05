@@ -83,13 +83,13 @@ function RecoveryGuideView() {
     <div className="flex flex-col h-[calc(100vh-80px)] bg-transparent text-gray-100 p-4 overflow-y-auto">
       <div className="bg-[#1e293b]/80 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-white/10 mb-6 mt-4">
         <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-          <span className="text-blue-400">🧠</span> Tài Liệu Khắc Phục
+          <span className="text-green-400">🧠</span> Tài Liệu Khắc Phục
         </h2>
         <p className="text-sm text-gray-400 mb-6">Tài liệu phân tích chuyên sâu các chỉ số vượt ngưỡng của bạn do AI tổng hợp.</p>
         
         {loading ? (
           <div className="flex flex-col items-center justify-center py-10 space-y-4">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
             <p className="text-gray-400 font-medium animate-pulse">AI đang phân tích số liệu...</p>
           </div>
         ) : error ? (
@@ -101,7 +101,7 @@ function RecoveryGuideView() {
           <div className="animate-fade-in">
             <button 
               onClick={speakText}
-              className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-3 mb-6 transition-all shadow-lg ${speaking ? 'bg-green-600 text-white shadow-green-500/30' : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-500/30'}`}
+              className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-3 mb-6 transition-all shadow-lg ${speaking ? 'bg-green-600 text-white shadow-green-500/30' : 'bg-green-600 hover:bg-green-500 text-white shadow-blue-500/30'}`}
             >
               {speaking ? (
                 <><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg> TẠM DỪNG ĐỌC</>

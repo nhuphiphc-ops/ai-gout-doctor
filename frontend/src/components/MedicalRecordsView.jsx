@@ -109,14 +109,14 @@ function MedicalRecordsView() {
         <h2 className="text-xl font-bold text-white">Hồ sơ Sinh hóa & Hình ảnh</h2>
         <button 
           onClick={() => setIsAdding(!isAdding)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-colors"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-colors"
         >
           {isAdding ? 'Hủy' : '+ Thêm kết quả'}
         </button>
       </div>
 
       {isAdding && (
-        <div className="bg-[#1e293b]/80 backdrop-blur-md border-white/10 rounded-2xl p-5 mb-6 shadow-md border border-blue-500/30 animate-fade-in">
+        <div className="bg-[#1e293b]/80 backdrop-blur-md border-white/10 rounded-2xl p-5 mb-6 shadow-md border border-green-500/30 animate-fade-in">
           <h3 className="font-bold text-white mb-4 border-b pb-2">Nhập kết quả xét nghiệm / Siêu âm mới</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -182,7 +182,7 @@ function MedicalRecordsView() {
               <textarea name="notes" value={formData.notes} onChange={handleInputChange} className="w-full p-3 bg-transparent text-gray-100 border border-white/20 rounded-xl h-24" placeholder="Nhập kết luận siêu âm..."></textarea>
             </div>
 
-            <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md">
+            <button type="submit" className="w-full bg-green-600 text-white font-bold py-3 rounded-xl shadow-md">
               Lưu kết quả khám
             </button>
           </form>
@@ -225,7 +225,7 @@ function MedicalRecordsView() {
                   <div><span className="text-gray-400 block">Huyết áp</span><span className="font-semibold">{record.blood_pressure_systolic}/{record.blood_pressure_diastolic}</span></div>
                 )}
                 {record.egfr && (
-                  <div><span className="text-gray-400 block">Độ lọc thận eGFR</span><span className="font-semibold text-blue-600">{record.egfr}</span></div>
+                  <div><span className="text-gray-400 block">Độ lọc thận eGFR</span><span className="font-semibold text-green-600">{record.egfr}</span></div>
                 )}
                 {record.kidney_cyst_size && (
                   <div><span className="text-gray-400 block">Nang thận</span><span className="font-semibold">{record.kidney_cyst_size}</span></div>

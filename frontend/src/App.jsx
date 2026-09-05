@@ -250,7 +250,7 @@ export default function App() {
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f172a]/90 backdrop-blur-xl border-t border-white/10 z-50 px-2 pb-safe pt-2">
         <div className="flex justify-around items-center h-16 max-w-md mx-auto">
           <button 
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'dashboard' ? 'text-blue-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'dashboard' ? 'text-green-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
             onClick={() => setCurrentView('dashboard')}
           >
             <Home size={22} className={currentView === 'dashboard' ? 'drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]' : ''} />
@@ -266,34 +266,34 @@ export default function App() {
           </button>
           
           <button 
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'medical' ? 'text-purple-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'medical' ? 'text-green-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
             onClick={() => setCurrentView('medical')}
           >
-            <FileText size={22} className={currentView === 'medical' ? 'drop-shadow-[0_0_8px_rgba(192,132,252,0.8)]' : ''} />
+            <FileText size={22} className={currentView === 'medical' ? 'drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]' : ''} />
             <span className="text-[10px] font-medium tracking-wide">Hồ sơ</span>
           </button>
           
           <button 
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'charts' ? 'text-orange-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'charts' ? 'text-green-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
             onClick={() => setCurrentView('charts')}
           >
-            <TrendingUp size={22} className={currentView === 'charts' ? 'drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]' : ''} />
+            <TrendingUp size={22} className={currentView === 'charts' ? 'drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]' : ''} />
             <span className="text-[10px] font-medium tracking-wide">Biểu đồ</span>
           </button>
           
           <button 
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'profile' ? 'text-pink-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'profile' ? 'text-yellow-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
             onClick={() => setCurrentView('profile')}
           >
-            <User size={22} className={currentView === 'profile' ? 'drop-shadow-[0_0_8px_rgba(244,114,182,0.8)]' : ''} />
+            <User size={22} className={currentView === 'profile' ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]' : ''} />
             <span className="text-[10px] font-medium tracking-wide">Cá nhân</span>
           </button>
           
           <button 
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'video_script' ? 'text-indigo-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'video_script' ? 'text-yellow-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
             onClick={() => setCurrentView('video_script')}
           >
-            <Video size={22} className={currentView === 'video_script' ? 'drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]' : ''} />
+            <Video size={22} className={currentView === 'video_script' ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]' : ''} />
             <span className="text-[10px] font-medium tracking-wide">Video AI</span>
           </button>
         </div>

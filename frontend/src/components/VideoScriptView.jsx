@@ -58,7 +58,7 @@ export default function VideoScriptView() {
   return (
     <div className="p-4 bg-transparent text-gray-100 min-h-[calc(100vh-80px)] overflow-y-auto pb-20">
       <div className="flex items-center gap-3 mb-6">
-        <FileVideo className="text-blue-400" size={28} />
+        <FileVideo className="text-green-400" size={28} />
         <h2 className="text-2xl font-bold text-white">Viết Kịch Bản Video</h2>
       </div>
 
@@ -72,7 +72,7 @@ export default function VideoScriptView() {
               value={formData.topic} 
               onChange={handleInputChange} 
               placeholder="Vd: 3 loại thực phẩm cần tránh cho người Gout..." 
-              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
               required 
             />
           </div>
@@ -83,7 +83,7 @@ export default function VideoScriptView() {
               name="format" 
               value={formData.format} 
               onChange={handleInputChange} 
-              className="w-full p-3 bg-gray-800 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500"
+              className="w-full p-3 bg-gray-800 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-green-500"
             >
               <option>Video ngắn (TikTok/Reels/Shorts: 30s - 60s)</option>
               <option>Video chuyên sâu (YouTube: 3 - 5 phút)</option>
@@ -99,7 +99,7 @@ export default function VideoScriptView() {
               value={formData.tone} 
               onChange={handleInputChange} 
               placeholder="Vd: Chuyên gia uy tín, dí dỏm..." 
-              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500"
+              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-green-500"
             />
           </div>
 
@@ -111,14 +111,14 @@ export default function VideoScriptView() {
               value={formData.audience} 
               onChange={handleInputChange} 
               placeholder="Vd: Dân văn phòng ngồi nhiều..." 
-              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500"
+              className="w-full p-3 bg-white/5 text-gray-100 border border-white/10 rounded-xl focus:outline-none focus:border-green-500"
             />
           </div>
 
           <button 
             type="submit" 
             disabled={loading || !formData.topic.trim()}
-            className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+            className="w-full py-4 bg-gradient-to-r from-green-600 to-yellow-500 hover:from-green-500 hover:to-yellow-400 text-white font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all disabled:opacity-50"
           >
             {loading ? <Loader2 className="animate-spin" size={20} /> : <FileVideo size={20} />}
             {loading ? 'Đang viết kịch bản...' : 'Tạo Kịch Bản Bằng AI'}
@@ -129,7 +129,7 @@ export default function VideoScriptView() {
       {script && (
         <div className="bg-[#1e293b]/80 backdrop-blur-md rounded-2xl shadow-lg border border-white/10 overflow-hidden animate-fade-in">
           <div className="flex items-center justify-between p-4 bg-white/5 border-b border-white/10">
-            <h3 className="font-bold text-blue-400">Kết Quả Kịch Bản</h3>
+            <h3 className="font-bold text-green-400">Kết Quả Kịch Bản</h3>
             <div className="flex gap-2">
               <button onClick={handleCopy} className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors flex items-center gap-1 text-sm text-gray-200">
                 {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
