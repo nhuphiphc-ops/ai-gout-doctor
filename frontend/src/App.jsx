@@ -8,7 +8,8 @@ import {
   Menu, 
   X,
   MessageCircle,
-  FileText
+  FileText,
+  Video
 } from 'lucide-react';
 
 import apiService from './services/api';
@@ -286,6 +287,14 @@ export default function App() {
           >
             <User size={22} className={currentView === 'profile' ? 'drop-shadow-[0_0_8px_rgba(244,114,182,0.8)]' : ''} />
             <span className="text-[10px] font-medium tracking-wide">Cá nhân</span>
+          </button>
+          
+          <button 
+            className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-all ${currentView === 'video_script' ? 'text-indigo-400 scale-110' : 'text-gray-400 hover:text-gray-200'}`} 
+            onClick={() => setCurrentView('video_script')}
+          >
+            <Video size={22} className={currentView === 'video_script' ? 'drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]' : ''} />
+            <span className="text-[10px] font-medium tracking-wide">Video AI</span>
           </button>
         </div>
       </div>
