@@ -142,6 +142,13 @@ export const apiService = {
     return response.data;
   },
   
+
+  // Video Script Generator
+  generateVideoScript: async (data) => {
+    const response = await api.post('/api/video-script/generate', data);
+    return response.data;
+  },
+  
   // AI Chat
   sendChatMessage: async (message, history) => {
     const response = await api.post('/api/chat', { message, history });

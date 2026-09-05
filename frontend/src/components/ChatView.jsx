@@ -13,30 +13,45 @@ function ChatView({ userProfile }) {
   const [speakingIdx, setSpeakingIdx] = useState(null);
 
   const speakText = (text, idx) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      if (speakingIdx === idx) {
+    if (!('speechSynthesis' in window)) return;
+    
+    window.speechSynthesis.cancel();
+    if (speakingIdx === idx) {
+      setSpeakingIdx(null);
+      return;
+    }
+    
+    const cleanText = text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/#/g, '');
+    const sentences = cleanText.match(/[^.!?]+[.!?]+/g) || [cleanText];
+    let currentIdx = 0;
+    
+    setSpeakingIdx(idx);
+    
+    const speakNext = () => {
+      if (currentIdx >= sentences.length) {
         setSpeakingIdx(null);
         return;
       }
       
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'vi-VN'; // Vietnamese language
-      utterance.rate = 1.1; // Slightly faster for Samsung
+      const utterance = new SpeechSynthesisUtterance(sentences[currentIdx].trim());
+      utterance.lang = 'vi-VN';
+      utterance.rate = 1.0;
       
-      // Try to find a Vietnamese or Google voice if available
       const voices = window.speechSynthesis.getVoices();
       const viVoice = voices.find(v => v.lang.includes('vi') || v.lang.includes('VI'));
       if (viVoice) utterance.voice = viVoice;
-
-      utterance.onend = () => setSpeakingIdx(null);
+      
+      utterance.onend = () => {
+        currentIdx++;
+        speakNext();
+      };
+      
       utterance.onerror = () => setSpeakingIdx(null);
       
-      setSpeakingIdx(idx);
       window.speechSynthesis.speak(utterance);
-    } else {
-      alert("Trình duyệt của bạn không hỗ trợ tính năng đọc văn bản.");
-    }
+    };
+    
+    speakNext();
   };
 
   const saveApiKey = (e) => {

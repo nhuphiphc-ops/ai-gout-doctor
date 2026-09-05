@@ -188,3 +188,10 @@ class ChatMessage(BaseModel):
 class ChatQuery(BaseModel):
     message: str
     history: List[ChatMessage] = []
+
+
+class VideoScriptRequest(BaseModel):
+    topic: str
+    format: str
+    tone: str
+    audience: str

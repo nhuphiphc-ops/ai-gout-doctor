@@ -705,3 +705,21 @@ def chat_with_ai(
     )
     
     return {"response": response_text}
+
+
+@app.post("/api/video-script/generate")
+def generate_video_script(
+    query: schemas.VideoScriptRequest,
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    import ai_engine
+    import os
+    api_key = os.getenv("GEMINI_API_KEY")
+    script = ai_engine.generate_video_script(
+        topic=query.topic,
+        format=query.format,
+        tone=query.tone,
+        audience=query.audience,
+        api_key=api_key
+    )
+    return {"script": script}

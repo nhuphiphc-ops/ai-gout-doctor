@@ -19,6 +19,7 @@ import ChartsView from './components/ChartsView';
 import ProfileView from './components/ProfileView';
 import ChatView from './components/ChatView';
 import RecoveryGuideView from './components/RecoveryGuideView';
+import VideoScriptView from './components/VideoScriptView';
 import MedicalRecordsView from './components/MedicalRecordsView';
 
 export default function App() {
