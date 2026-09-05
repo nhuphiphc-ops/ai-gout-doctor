@@ -84,6 +84,21 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
         </div>
       )}
 
+          {/* Video Script Module Button */}
+          <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
+              <Video size={20} color="#eab308" />
+              Viết Kịch Bản Video Sức Khỏe
+            </h4>
+            <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              Module AI hỗ trợ sáng tạo kịch bản video đa nền tảng (TikTok, Shorts, YouTube) dành cho kênh Mr. Phi.
+            </p>
+            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
+              <Video size={18} style={{ marginRight: '8px' }} />
+              Tạo Kịch Bản Mới
+            </button>
+          </div>
+
       {/* Scores Grid */}
       <div className="scores-container">
         {/* QoL Index */}
@@ -369,36 +384,6 @@ export default function Dashboard({ data, currentUser, onNavigate, onExport, onR
                 <span>Tải Báo cáo Word (.docx)</span>
               </button>
             </div>
-          </div>
-
-          {/* Video Script Module Button */}
-          <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
-            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
-              <Video size={20} color="#eab308" />
-              Viết Kịch Bản Video Sức Khỏe
-            </h4>
-            <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
-              Module AI hỗ trợ sáng tạo kịch bản video đa nền tảng (TikTok, Shorts, YouTube) dành cho kênh Mr. Phi.
-            </p>
-            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
-              <Video size={18} style={{ marginRight: '8px' }} />
-              Tạo Kịch Bản Mới
-            </button>
-          </div>
-
-          {/* Video Script Module Button */}
-          <div className="card glass-effect" style={{ marginBottom: '24px', padding: '16px' }}>
-            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '18px', color: '#fff' }}>
-              <Video size={20} color="#eab308" />
-              Viết Kịch Bản Video Sức Khỏe
-            </h4>
-            <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
-              Module AI hỗ trợ sáng tạo kịch bản video đa nền tảng (TikTok, Shorts, YouTube) dành cho kênh Mr. Phi.
-            </p>
-            <button onClick={() => onNavigate('video_script')} className="btn" style={{ background: 'linear-gradient(135deg, #eab308 0%, #facc15 100%)', color: '#fff', width: '100%', justifyContent: 'center', fontWeight: 'bold' }}>
-              <Video size={18} style={{ marginRight: '8px' }} />
-              Tạo Kịch Bản Mới
-            </button>
           </div>
 
           {/* Recovery Guide Button */}
